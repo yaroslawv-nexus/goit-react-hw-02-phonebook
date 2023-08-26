@@ -9,20 +9,20 @@ import {
 
 export class ContactList extends Component {
   filterByName(contacts) {
-    {
-      return contacts.filter(contact => {
-        const isInclude = contact.name
-          .toLowerCase()
-          .includes(this.props.filterText.toLowerCase());
-        if (!this.props.filterText) {
-          return true;
-        }
-        if (isInclude) {
-          return true;
-        }
-        return false;
-      });
+    if (!this.props.filterText) {
+      return contacts;
     }
+
+    return contacts.filter(contact => {
+      const isInclude = contact.name
+        .toLowerCase()
+        .includes(this.props.filterText.toLowerCase());
+
+      if (isInclude) {
+        return true;
+      }
+      return false;
+    });
   }
 
   render() {
