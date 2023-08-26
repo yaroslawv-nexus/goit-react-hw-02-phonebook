@@ -1,14 +1,21 @@
 import React from 'react';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { ErrorMess } from './ContactForm.styled';
+import {
+  ErrorMess,
+  FormStyle,
+  FieldInputStyle,
+  FieldSubmitStyle,
+} from './ContactForm.styled';
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
-    .required('Required'),
-  number: Yup.number().required().positive().integer(),
+    .required('Enter your name'),
+  number: Yup.string()
+    .matches(/^\+380\d{9}$/, 'Invalid phone number format (+380XXXXXXXXX)')
+    .required('Enter a phone number'),
 });
 
 export const ContactForm = ({ addContact }) => {
@@ -23,18 +30,18 @@ export const ContactForm = ({ addContact }) => {
         addContact(values);
       }}
     >
-      <Form>
+      <FormStyle>
         <h2>Sign Up</h2>
         <label>
-          Name <Field name="name" type="text" />
+          Name <FieldInputStyle name="name" type="text" />
         </label>
         <ErrorMess name="name" component="span" />
         <label>
-          Number <Field name="number" type="tel" />
+          Number <FieldInputStyle name="number" type="tel" />
         </label>
         <ErrorMess name="number" component="span" />
-        <button type="submit">Add Contact</button>
-      </Form>
+        <FieldSubmitStyle type="submit">Add Contact</FieldSubmitStyle>
+      </FormStyle>
     </Formik>
   );
 };

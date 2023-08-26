@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import { Contact } from 'components/Contact/Contact';
+import {
+  ContactListStyle,
+  ContactContainer,
+  InputSearchStyle,
+  LabelSearchStyle,
+} from './ContactList.styled';
 
 export class ContactList extends Component {
   filterByName(contacts) {
@@ -22,18 +28,18 @@ export class ContactList extends Component {
   render() {
     const { filterChange, filterText, contacts, deleteContact } = this.props;
     return (
-      <div>
+      <ContactContainer>
         <h2>Contacts</h2>
         <label>
-          Find contacts by name
-          <input
+          <LabelSearchStyle>Find contacts by name</LabelSearchStyle>
+          <InputSearchStyle
             type="text"
             name="filter"
             onChange={filterChange}
             value={filterText}
           />
         </label>
-        <ul>
+        <ContactListStyle>
           {this.filterByName(contacts).map(element => {
             return (
               <Contact
@@ -43,8 +49,8 @@ export class ContactList extends Component {
               />
             );
           })}
-        </ul>
-      </div>
+        </ContactListStyle>
+      </ContactContainer>
     );
   }
 }
