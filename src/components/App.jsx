@@ -40,7 +40,7 @@ export class App extends Component {
         alert('the contact already exists');
         flag = true;
       }
-      return;
+      return element;
     });
     return flag;
   }
