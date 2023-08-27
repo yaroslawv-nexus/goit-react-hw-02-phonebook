@@ -6,7 +6,7 @@ import {
   FormStyle,
   FieldInputStyle,
   FieldSubmitStyle,
-} from './ContactForm.styled';
+} from './CreateContactForm.styled';
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
@@ -18,7 +18,7 @@ const SignupSchema = Yup.object().shape({
     .required('Enter a phone number'),
 });
 
-export const ContactForm = ({ addContact }) => {
+export const CreateContactForm = ({ addContact }) => {
   return (
     <Formik
       initialValues={{
@@ -31,7 +31,6 @@ export const ContactForm = ({ addContact }) => {
       }}
     >
       <FormStyle>
-        <h2>Sign Up</h2>
         <label>
           Name <FieldInputStyle name="name" type="text" />
         </label>

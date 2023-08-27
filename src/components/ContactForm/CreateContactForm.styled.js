@@ -6,8 +6,7 @@ export const ErrorMess = styled(ErrorMessage)`
 `;
 
 export const FormStyle = styled(Form)`
- max-width: 600px;
-  margin: 0 auto;
+
   padding: 20px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
